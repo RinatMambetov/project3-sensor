@@ -5,13 +5,16 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import ru.rinat.project3.models.Measurement;
+import ru.rinat.project3.models.Sensor;
 
 /**
  * DTO for {@link Measurement}
  */
 @Getter
 @Setter
+@ToString
 public class MeasurementDto {
 
     @NotNull(message = "Value can't be null")
@@ -22,6 +25,6 @@ public class MeasurementDto {
     @NotNull(message = "Raining can't be null")
     private Boolean raining;
 
-    @NotNull(message = "Sensor can't be null")
-    private SensorDto sensor;
+    private Sensor sensor;
+
 }

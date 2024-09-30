@@ -8,5 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface SensorRepository extends JpaRepository<Sensor, Long> {
-    Optional<Sensor> findByName(String name);
+
+    Optional<Sensor> findByNameIgnoreCase(String name);
+
 }

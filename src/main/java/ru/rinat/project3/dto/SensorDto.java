@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-import ru.rinat.project3.models.Sensor;
 
 /**
  * DTO for {@link ru.rinat.project3.models.Sensor}
@@ -21,7 +20,4 @@ public class SensorDto {
     @NotBlank(message = "Name cannot be blank")
     private String name;
 
-    public Sensor toModel() {
-        return new Sensor(name);
-    }
 }

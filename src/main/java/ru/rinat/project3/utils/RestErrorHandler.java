@@ -5,19 +5,22 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import ru.rinat.project3.exceptions.MeasurementNotCreatedException;
+import ru.rinat.project3.exceptions.SensorNotCreatedException;
 
 @ControllerAdvice
 public class RestErrorHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(SensorNotCreatedException.class)
     public ResponseEntity<String> handleSensorNotCreatedException(SensorNotCreatedException ex) {
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedTime = now.format(formatter);
+        String formattedTime = Helper.getCurrentFormattedTime();
+        String message = String.format("Error: %s | Time: %s", ex.getMessage(), formattedTime);
+        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+    }
 
+    @ExceptionHandler(MeasurementNotCreatedException.class)
+    public ResponseEntity<String> handleMeasurementNotCreatedException(MeasurementNotCreatedException ex) {
+        String formattedTime = Helper.getCurrentFormattedTime();
         String message = String.format("Error: %s | Time: %s", ex.getMessage(), formattedTime);
         return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }

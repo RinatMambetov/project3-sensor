@@ -35,9 +35,8 @@ public class Measurement {
     @Column(name = "raining", nullable = false)
     private Boolean raining;
 
-    @NotNull(message = "Sensor can't be null")
     @ManyToOne
-    @JoinColumn(name = "sensor_id")
+    @JoinColumn(name = "sensor_id", referencedColumnName = "id")
     private Sensor sensor;
 
     @NotNull(message = "Time can't be null")

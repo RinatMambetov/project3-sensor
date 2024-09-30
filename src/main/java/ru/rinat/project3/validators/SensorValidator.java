@@ -1,4 +1,4 @@
-package ru.rinat.project3.utils;
+package ru.rinat.project3.validators;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.NonNull;
@@ -27,7 +27,7 @@ public class SensorValidator implements Validator {
         Sensor sensor = SensorMapper.INSTANCE.toEntity(sensorDto);
         if (sensorService.isExist(sensor)) {
             errors.rejectValue("name", "error.name",
-                    "Sensor with this name already exists");
+                    "Sensor with name: " + sensor.getName() + " already exists");
         }
     }
 }

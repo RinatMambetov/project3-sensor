@@ -10,7 +10,9 @@ import ru.rinat.project3.models.Measurement;
 public interface MeasurementMapper {
     MeasurementMapper INSTANCE = Mappers.getMapper(MeasurementMapper.class);
 
-    @Mapping(target = "time", ignore = true)
+    @Mapping(target = "sensor", ignore = true)
+    @Mapping(target = "time", expression = "java(java.time.LocalDateTime.now())")
     @Mapping(target = "id", ignore = true)
     Measurement toEntity(MeasurementDto measurementDto);
+
 }

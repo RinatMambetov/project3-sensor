@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @NoArgsConstructor
 @Getter
 @Setter
@@ -21,7 +23,6 @@ public class Sensor {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
-
     private Long id;
 
     @NotBlank(message = "Name cannot be blank")
@@ -30,6 +31,10 @@ public class Sensor {
     @NotEmpty(message = "Name cannot be empty")
     @Column(name = "name", unique = true)
     private String name;
+
+    @OneToMany(mappedBy = "sensor", cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<Measurement> measurements;
 
     public Sensor(String name) {
         this.name = name;

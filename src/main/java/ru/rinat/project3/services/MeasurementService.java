@@ -13,6 +13,7 @@ public class MeasurementService {
 
     private final MeasurementRepository measurementRepository;
 
+    @Transactional
     public void create(Measurement measurement) {
         measurementRepository.save(measurement);
     }

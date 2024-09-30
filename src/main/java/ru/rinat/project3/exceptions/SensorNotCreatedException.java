@@ -1,4 +1,4 @@
-package ru.rinat.project3.utils;
+package ru.rinat.project3.exceptions;
 
 public class SensorNotCreatedException extends RuntimeException {
     public SensorNotCreatedException(String message) {
