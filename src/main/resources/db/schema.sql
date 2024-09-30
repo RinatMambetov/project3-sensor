@@ -1,0 +1,19 @@
+CREATE TABLE sensor (
+  id BIGINT NOT NULL,
+   name VARCHAR(30) NOT NULL,
+   CONSTRAINT pk_sensor PRIMARY KEY (id)
+);
+
+ALTER TABLE sensor ADD CONSTRAINT uc_sensor_name UNIQUE (name);
+
+
+CREATE TABLE measurement (
+  id BIGINT NOT NULL,
+   value DOUBLE PRECISION NOT NULL,
+   raining BOOLEAN NOT NULL,
+   sensor_id BIGINT NOT NULL,
+   time TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+   CONSTRAINT pk_measurement PRIMARY KEY (id)
+);
+
+ALTER TABLE measurement ADD CONSTRAINT FK_MEASUREMENT_ON_SENSOR FOREIGN KEY (sensor_id) REFERENCES sensor (id);
