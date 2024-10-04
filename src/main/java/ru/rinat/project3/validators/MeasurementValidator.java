@@ -25,7 +25,7 @@ public class MeasurementValidator implements Validator {
     @Override
     public void validate(@NonNull Object target, @NonNull Errors errors) {
         MeasurementDto measurementDto = (MeasurementDto) target;
-        String name = measurementDto.getSensor().getName();
+        String name = measurementDto.getSensorDto().getName();
         Optional<Sensor> sensor = sensorService.findByNameIgnoreCase(name);
         if (sensor.isEmpty()) {
             errors.rejectValue("sensor", "sensor.name",

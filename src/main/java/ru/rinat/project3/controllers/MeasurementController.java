@@ -5,10 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.rinat.project3.dto.MeasurementDto;
 import ru.rinat.project3.exceptions.MeasurementNotCreatedException;
 import ru.rinat.project3.mappers.MeasurementMapper;
@@ -19,6 +16,7 @@ import ru.rinat.project3.services.SensorService;
 import ru.rinat.project3.utils.Helper;
 import ru.rinat.project3.validators.MeasurementValidator;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -41,9 +39,14 @@ public class MeasurementController {
         }
 
         Measurement measurement = MeasurementMapper.INSTANCE.toEntity(measurementDto);
-        Optional<Sensor> sensor = sensorService.findByNameIgnoreCase(measurementDto.getSensor().getName());
+        Optional<Sensor> sensor = sensorService.findByNameIgnoreCase(measurementDto.getSensorDto().getName());
         sensor.ifPresent(measurement::setSensor);
         measurementService.create(measurement);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @GetMapping
+    public List<MeasurementDto> getList() {
+        return measurementService.getList();
     }
 }

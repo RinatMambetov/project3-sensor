@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import ru.rinat.project3.models.Measurement;
-import ru.rinat.project3.models.Sensor;
 
 /**
  * DTO for {@link Measurement}
@@ -25,6 +24,6 @@ public class MeasurementDto {
     @NotNull(message = "Raining can't be null")
     private Boolean raining;
 
-    private Sensor sensor;
+    private SensorDto sensorDto;
 
 }
