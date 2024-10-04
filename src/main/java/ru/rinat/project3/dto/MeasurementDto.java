@@ -5,7 +5,6 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import ru.rinat.project3.models.Measurement;
 
 /**
@@ -13,7 +12,6 @@ import ru.rinat.project3.models.Measurement;
  */
 @Getter
 @Setter
-@ToString
 public class MeasurementDto {
 
     @NotNull(message = "Value can't be null")

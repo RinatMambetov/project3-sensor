@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.rinat.project3.dto.MeasurementDto;
 import ru.rinat.project3.exceptions.MeasurementNotCreatedException;
+import ru.rinat.project3.filters.MeasurementIsRainyFilter;
 import ru.rinat.project3.mappers.MeasurementMapper;
 import ru.rinat.project3.models.Measurement;
 import ru.rinat.project3.models.Sensor;
@@ -51,4 +52,8 @@ public class MeasurementController {
         return measurementService.getList(pageable);
     }
 
+    @GetMapping("/rainyDaysCount")
+    public int getRainyDaysCount(@ModelAttribute MeasurementIsRainyFilter filter) {
+        return measurementService.getListIsRainyCount(filter);
+    }
 }

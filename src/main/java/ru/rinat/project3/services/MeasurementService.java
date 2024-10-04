@@ -3,12 +3,16 @@ package ru.rinat.project3.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.rinat.project3.dto.MeasurementDto;
+import ru.rinat.project3.filters.MeasurementIsRainyFilter;
 import ru.rinat.project3.mappers.MeasurementMapper;
 import ru.rinat.project3.models.Measurement;
 import ru.rinat.project3.repositories.MeasurementRepository;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -28,4 +32,10 @@ public class MeasurementService {
         return measurements.map(measurementMapper::toDto);
     }
 
+
+    public int getListIsRainyCount(MeasurementIsRainyFilter filter) {
+        Specification<Measurement> spec = filter.toSpecification();
+        List<Measurement> measurements = measurementRepository.findAll(spec);
+        return measurements.size();
+    }
 }

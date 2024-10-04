@@ -8,14 +8,12 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.List;
 
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 @Entity
 @Table(name = "sensor")
 public class Sensor {
@@ -33,7 +31,6 @@ public class Sensor {
     private String name;
 
     @OneToMany(mappedBy = "sensor", cascade = CascadeType.ALL)
-    @ToString.Exclude
     private List<Measurement> measurements;
 
     public Sensor(String name) {
