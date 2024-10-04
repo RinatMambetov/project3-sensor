@@ -2,6 +2,8 @@ package ru.rinat.project3.controllers;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -16,7 +18,6 @@ import ru.rinat.project3.services.SensorService;
 import ru.rinat.project3.utils.Helper;
 import ru.rinat.project3.validators.MeasurementValidator;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -46,7 +47,8 @@ public class MeasurementController {
     }
 
     @GetMapping
-    public List<MeasurementDto> getList() {
-        return measurementService.getList();
+    public Page<MeasurementDto> getList(Pageable pageable) {
+        return measurementService.getList(pageable);
     }
+
 }

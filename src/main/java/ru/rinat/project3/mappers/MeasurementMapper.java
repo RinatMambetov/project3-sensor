@@ -18,4 +18,5 @@ public interface MeasurementMapper {
 
     @InheritInverseConfiguration(name = "toEntity")
     MeasurementDto toDto(Measurement measurement);
+
 }
