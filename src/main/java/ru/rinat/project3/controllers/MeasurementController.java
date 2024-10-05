@@ -10,13 +10,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.rinat.project3.dto.MeasurementDto;
 import ru.rinat.project3.exceptions.MeasurementNotCreatedException;
-import ru.rinat.project3.filters.MeasurementIsRainyFilter;
 import ru.rinat.project3.mappers.MeasurementMapper;
 import ru.rinat.project3.models.Measurement;
 import ru.rinat.project3.models.Sensor;
 import ru.rinat.project3.services.MeasurementService;
 import ru.rinat.project3.services.SensorService;
 import ru.rinat.project3.utils.Helper;
+import ru.rinat.project3.utils.MeasurementIsRainyFilter;
 import ru.rinat.project3.validators.MeasurementValidator;
 
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package ru.rinat.project3.filters;
+package ru.rinat.project3.utils;
 
 import org.springframework.data.jpa.domain.Specification;
 import ru.rinat.project3.models.Measurement;

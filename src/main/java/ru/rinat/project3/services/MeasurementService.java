@@ -7,10 +7,10 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.rinat.project3.dto.MeasurementDto;
-import ru.rinat.project3.filters.MeasurementIsRainyFilter;
 import ru.rinat.project3.mappers.MeasurementMapper;
 import ru.rinat.project3.models.Measurement;
 import ru.rinat.project3.repositories.MeasurementRepository;
+import ru.rinat.project3.utils.MeasurementIsRainyFilter;
 
 import java.util.List;
 
